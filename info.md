@@ -60,3 +60,72 @@ data:
   phone_number: "+1234567890"
   tts_text: "The garage door has been open for 30 minutes"
   caller_id: "Home Security"
+Example - Call with Recording:
+yamlservice: advanced_phone_system.call
+data:
+  phone_number: "+1234567890"
+  recording_file: "fire_alarm.wav"
+  caller_id: "Fire Alert"
+advanced_phone_system.broadcast
+Broadcast a message to multiple numbers or a contact group.
+Example - Broadcast to Group:
+yamlservice: advanced_phone_system.broadcast
+data:
+  name: "Family Alert"
+  group_name: "Family"
+  tts_text: "Dinner is ready! Please come home."
+  caller_id: "Home"
+Example - Broadcast to Multiple Numbers:
+yamlservice: advanced_phone_system.broadcast
+data:
+  name: "Emergency Alert"
+  phone_numbers:
+    - "+1234567890"
+    - "+0987654321"
+  tts_text: "Emergency situation detected"
+  caller_id: "Emergency System"
+advanced_phone_system.hangup
+Hangup an active call.
+yamlservice: advanced_phone_system.hangup
+data:
+  call_id: "call_123456"
+Sensors
+The integration provides these sensors:
+
+sensor.phone_system_active_calls - Number of currently active calls
+sensor.phone_system_total_calls - Total calls made today
+sensor.phone_system_groups - Number of contact groups
+sensor.phone_system_broadcasts - Number of active broadcasts
+
+Automation Examples
+Alert on door open:
+yamlautomation:
+  - alias: "Front Door Alert"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.front_door
+        to: "on"
+    action:
+      - service: advanced_phone_system.call
+        data:
+          phone_number: "+1234567890"
+          tts_text: "Alert! The front door has been opened."
+          caller_id: "Security System"
+Fire alarm notification to family group:
+yamlautomation:
+  - alias: "Fire Alarm Alert"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.smoke_detector
+        to: "on"
+    action:
+      - service: advanced_phone_system.broadcast
+        data:
+          name: "Fire Emergency"
+          group_name: "Family"
+          recording_file: "fire_alarm.wav"
+          caller_id: "Emergency Alert"
+Support
+For issues and feature requests, please use the GitHub Issues page.
+License
+MIT License - see LICENSE file for details.
