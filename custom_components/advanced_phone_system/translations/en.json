@@ -1,1 +1,20 @@
-
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Advanced Phone System",
+        "description": "Configure your phone system connection",
+        "data": {
+          "host": "Host",
+          "port": "Port"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the phone system"
+    },
+    "abort": {
+      "already_configured": "Device is already configured"
+    }
+  }
+}
