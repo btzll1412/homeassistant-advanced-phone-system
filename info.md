@@ -60,16 +60,19 @@ data:
   phone_number: "+1234567890"
   tts_text: "The garage door has been open for 30 minutes"
   caller_id: "Home Security"
-Example - Call with Recording:
-yamlservice: advanced_phone_system.call
+
+## Example - Call with Recording
+service: advanced_phone_system.call
 data:
   phone_number: "+1234567890"
   recording_file: "fire_alarm.wav"
   caller_id: "Fire Alert"
 advanced_phone_system.broadcast
 Broadcast a message to multiple numbers or a contact group.
-Example - Broadcast to Group:
-yamlservice: advanced_phone_system.broadcast
+
+
+## Example - Broadcast to Group:
+service: advanced_phone_system.broadcast
 data:
   name: "Family Alert"
   group_name: "Family"
