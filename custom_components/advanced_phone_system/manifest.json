@@ -1,1 +1,11 @@
-
+{
+  "domain": "advanced_phone_system",
+  "name": "Advanced Phone System",
+  "documentation": "https://github.com/btzll1412/homeassistant-advanced-phone-system",
+  "codeowners": ["@btzll1412"],
+  "dependencies": [],
+  "requirements": [],
+  "version": "1.0.0",
+  "config_flow": true,
+  "iot_class": "local_polling"
+}
