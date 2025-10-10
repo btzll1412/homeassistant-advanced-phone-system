@@ -1,1 +1,133 @@
+call:
+  name: Make Phone Call
+  description: Make a phone call with TTS or recording
+  fields:
+    phone_number:
+      name: Phone Number
+      description: Phone number to call (E.164 format)
+      required: true
+      example: "+1234567890"
+      selector:
+        text:
+    tts_text:
+      name: TTS Text
+      description: Text to speak (required if no recording_file)
+      example: "This is a test message"
+      selector:
+        text:
+          multiline: true
+    recording_file:
+      name: Recording File
+      description: Recording file name (required if no tts_text)
+      example: "alert.wav"
+      selector:
+        text:
+    caller_id:
+      name: Caller ID
+      description: Caller ID to display
+      example: "Home Assistant"
+      selector:
+        text:
+    max_retries:
+      name: Max Retries
+      description: Maximum number of retry attempts
+      default: 3
+      selector:
+        number:
+          min: 0
+          max: 10
+    pre_message_delay:
+      name: Pre-Message Delay
+      description: Delay in seconds before playing message
+      default: 1
+      selector:
+        number:
+          min: 0
+          max: 10
+    max_ring_time:
+      name: Max Ring Time
+      description: Maximum ring time in seconds
+      default: 45
+      selector:
+        number:
+          min: 15
+          max: 90
 
+broadcast:
+  name: Make Broadcast
+  description: Make a broadcast call to multiple numbers or a group
+  fields:
+    name:
+      name: Broadcast Name
+      description: Name for this broadcast
+      required: true
+      example: "Emergency Alert"
+      selector:
+        text:
+    group_name:
+      name: Group Name
+      description: Name of contact group to call (required if no phone_numbers)
+      example: "test group 1"
+      selector:
+        text:
+    phone_numbers:
+      name: Phone Numbers
+      description: List of phone numbers (required if no group_name)
+      example: ["+1234567890", "+0987654321"]
+      selector:
+        object:
+    tts_text:
+      name: TTS Text
+      description: Text to speak (required if no recording_file)
+      example: "This is an emergency broadcast"
+      selector:
+        text:
+          multiline: true
+    recording_file:
+      name: Recording File
+      description: Recording file name (required if no tts_text)
+      example: "emergency.wav"
+      selector:
+        text:
+    caller_id:
+      name: Caller ID
+      description: Caller ID to display
+      example: "Emergency System"
+      selector:
+        text:
+    concurrent_calls:
+      name: Concurrent Calls
+      description: Number of simultaneous calls
+      default: 5
+      selector:
+        number:
+          min: 1
+          max: 20
+    pre_message_delay:
+      name: Pre-Message Delay
+      description: Delay in seconds before playing message
+      default: 1
+      selector:
+        number:
+          min: 0
+          max: 10
+    max_ring_time:
+      name: Max Ring Time
+      description: Maximum ring time in seconds
+      default: 45
+      selector:
+        number:
+          min: 15
+          max: 90
+
+hangup:
+  name: Hangup Call
+  description: Hangup an active call
+  fields:
+    call_id:
+      name: Call ID
+      description: ID of the call to hangup
+      required: true
+      example: "call_123456"
+      selector:
+        text:
