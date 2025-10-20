@@ -1,7 +1,5 @@
 {
   "name": "Advanced Phone System",
   "render_readme": true,
-  "domains": ["advanced_phone_system"],
-  "iot_class": "Local Polling",
   "homeassistant": "2023.1.0"
 }
