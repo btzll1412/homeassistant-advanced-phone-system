@@ -55,14 +55,16 @@ class PhoneSystemCoordinator(DataUpdateCoordinator):
         except Exception as err:
             raise UpdateFailed(f"Error communicating with API: {err}")
 
-    async def make_call(self, phone_number, tts_text=None, recording_file=None, 
-                       caller_id=None, max_retries=3, pre_message_delay=1, max_ring_time=45):
+    async def make_call(self, phone_number, tts_text=None, recording_file=None,
+                       caller_id=None, max_retries=3, pre_message_delay=1, max_ring_time=45,
+                       local_extension=False):
         """Make a phone call."""
         data = {
             "phone_number": phone_number,
             "max_retries": max_retries,
             "pre_message_delay": pre_message_delay,
-            "max_ring_time": max_ring_time
+            "max_ring_time": max_ring_time,
+            "local_extension": local_extension,
         }
         
         if caller_id:
