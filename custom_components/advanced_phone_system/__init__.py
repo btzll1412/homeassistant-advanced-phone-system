@@ -53,7 +53,8 @@ async def async_setup_services(hass: HomeAssistant, coordinator):
         max_retries = call.data.get("max_retries", 3)
         pre_message_delay = call.data.get("pre_message_delay", 1)
         max_ring_time = call.data.get("max_ring_time", 45)
-        
+        local_extension = call.data.get("local_extension", False)
+
         result = await coordinator.make_call(
             phone_number=phone_number,
             tts_text=tts_text,
@@ -61,7 +62,8 @@ async def async_setup_services(hass: HomeAssistant, coordinator):
             caller_id=caller_id,
             max_retries=max_retries,
             pre_message_delay=pre_message_delay,
-            max_ring_time=max_ring_time
+            max_ring_time=max_ring_time,
+            local_extension=local_extension,
         )
         
         if result:

@@ -4,11 +4,17 @@ call:
   fields:
     phone_number:
       name: Phone Number
-      description: Phone number to call (E.164 format)
+      description: Phone number to call (E.164 format for external, e.g. "+1234567890") or local extension number (e.g. "101") when local_extension is true
       required: true
       example: "+1234567890"
       selector:
         text:
+    local_extension:
+      name: Local Extension
+      description: Set to true when calling a local PBX extension (e.g. 101) instead of an external phone number. Routes the call through the internal context instead of the outbound trunk.
+      default: false
+      selector:
+        boolean:
     tts_text:
       name: TTS Text
       description: Text to speak (required if no recording_file)
